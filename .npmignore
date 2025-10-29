@@ -1,0 +1,38 @@
+# Source files
+src/
+demo/
+
+# Config files
+tsconfig.json
+vite.config.ts
+.eslintrc.js
+.prettierrc
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Documentation (keep README.md)
+CLAUDE.MD
+
+# Testing
+tests/
+coverage/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Other
+node_modules/
+.DS_Store
+*.log
