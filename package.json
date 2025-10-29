@@ -1,5 +1,5 @@
 {
-  "name": "react-text-animate",
+  "name": "react-text-animator",
   "version": "1.0.0",
   "description": "Beautiful text animations for React - typewriter, particle effects, morphing, and more. Zero dependencies, TypeScript support, highly customizable.",
   "main": "./dist/index.cjs",
@@ -41,12 +41,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hichamcc/react-text-animate.git"
+    "url": "https://github.com/hichamcc/react-text-animator.git"
   },
   "bugs": {
-    "url": "https://github.com/hichamcc/react-text-animate/issues"
+    "url": "https://github.com/hichamcc/react-text-animator/issues"
   },
-  "homepage": "https://github.com/hichamcc/react-text-animate#readme",
+  "homepage": "https://github.com/hichamcc/react-text-animator#readme",
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
