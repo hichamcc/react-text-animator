@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
 
           <p style={styles.subtitle}>
             <TextAnimate animation="fadeIn" delay={2200} duration={1000} stagger={20}>
-              Beautiful text animations for React with zero dependencies
+              Beautiful text animations for React 
             </TextAnimate>
           </p>
 

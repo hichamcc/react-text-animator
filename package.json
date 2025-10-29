@@ -37,8 +37,16 @@
     "ui",
     "component"
   ],
-  "author": "",
+  "author": "HICHAM",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hichamcc/react-text-animate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hichamcc/react-text-animate/issues"
+  },
+  "homepage": "https://github.com/hichamcc/react-text-animate#readme",
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
