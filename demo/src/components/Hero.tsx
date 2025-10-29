@@ -4,6 +4,18 @@ import { TextAnimate } from 'react-text-animate';
 const Hero: React.FC = () => {
   return (
     <section className="hero" style={styles.hero}>
+      <style>{`
+        @keyframes slideUpFade {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
       <div className="container">
         <div style={styles.content}>
           <h1 style={styles.title}>
@@ -14,17 +26,35 @@ const Hero: React.FC = () => {
 
           <p style={styles.subtitle}>
             <TextAnimate animation="fadeIn" delay={2200} duration={1000} stagger={20}>
-              Beautiful text animations for React 
+              Beautiful text animations for React
             </TextAnimate>
           </p>
 
+          <div style={styles.installSection}>
+            <div style={styles.installBox}>
+              <code style={styles.installCode}>npm install react-text-animator</code>
+            </div>
+          </div>
+
           <div style={styles.buttons}>
-            <button className="btn btn-primary">
-              Get Started
-            </button>
-            <button className="btn btn-secondary">
-              View on GitHub
-            </button>
+            <a
+              href="https://www.npmjs.com/package/react-text-animator"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              style={{ textDecoration: 'none' }}
+            >
+              📦 npm Docs
+            </a>
+            <a
+              href="https://github.com/hichamcc/react-text-animator"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+              style={{ textDecoration: 'none' }}
+            >
+              ⭐ GitHub
+            </a>
           </div>
 
           <div style={styles.demoText}>
@@ -75,11 +105,31 @@ const styles: Record<string, React.CSSProperties> = {
     maxWidth: '600px',
     margin: '0 auto 3rem',
   },
+  installSection: {
+    marginBottom: '2rem',
+    animation: 'slideUpFade 0.8s ease-out 3s backwards',
+  },
+  installBox: {
+    background: 'rgba(255, 255, 255, 0.9)',
+    border: '2px solid #0ea5e9',
+    borderRadius: '12px',
+    padding: '1.25rem 2rem',
+    display: 'inline-block',
+    boxShadow: '0 4px 20px rgba(14, 165, 233, 0.15)',
+    backdropFilter: 'blur(10px)',
+  },
+  installCode: {
+    fontFamily: 'Monaco, Courier New, monospace',
+    fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+    color: '#0284c7',
+    fontWeight: 600,
+  },
   buttons: {
     display: 'flex',
     gap: '1rem',
     justifyContent: 'center',
     flexWrap: 'wrap',
+    marginTop: '2rem',
   },
   demoText: {
     marginTop: '5rem',

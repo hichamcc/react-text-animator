@@ -6,6 +6,10 @@
 
 Beautiful text animations for React with zero dependencies. Make your text come alive with typewriter effects, particle explosions, morphing text, glitch effects, and more!
 
+## 🎮 [Live Demo](https://react-text-animator.vercel.app)
+
+👉 **[View Live Demo](https://react-text-animator.vercel.app)** - See all animations in action!
+
 ## ✨ Features
 
 - 🎨 **9 Animation Types** - Typewriter, particles, slide, fade, morph, scramble, glitch, wave, blur

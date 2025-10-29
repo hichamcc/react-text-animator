@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd demo && npm install && npm run build",
+  "outputDirectory": "demo/dist",
+  "installCommand": "npm install",
+  "framework": null,
+  "devCommand": "cd demo && npm run dev"
+}
