@@ -1,6 +1,6 @@
 {
   "name": "react-text-animator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautiful text animations for React - typewriter, particle effects, morphing, and more. Zero dependencies, TypeScript support, highly customizable.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
