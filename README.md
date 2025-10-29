@@ -1,14 +1,15 @@
-# React Text Animate
+# React Text Animator
 
-[![npm version](https://img.shields.io/npm/v/react-text-animate.svg)](https://www.npmjs.com/package/react-text-animate)
+[![npm version](https://img.shields.io/npm/v/react-text-animator.svg)](https://www.npmjs.com/package/react-text-animator)
+[![npm downloads](https://img.shields.io/npm/dm/react-text-animator.svg)](https://www.npmjs.com/package/react-text-animator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Beautiful text animations for React with zero dependencies. Make your text come alive with typewriter effects, particle explosions, smooth transitions, and more!
+Beautiful text animations for React with zero dependencies. Make your text come alive with typewriter effects, particle explosions, morphing text, glitch effects, and more!
 
 ## ✨ Features
 
-- 🎨 **Multiple Animation Types** - Typewriter, particles, slide, fade, and more
-- 🚀 **Zero Dependencies** - No external dependencies, lightweight bundle
+- 🎨 **9 Animation Types** - Typewriter, particles, slide, fade, morph, scramble, glitch, wave, blur
+- 🚀 **Zero Dependencies** - No external dependencies, lightweight bundle (~4KB gzipped)
 - 💪 **TypeScript Support** - Full type definitions included
 - ⚡ **Performance Optimized** - Smooth 60fps animations using CSS and Canvas
 - 🎯 **Flexible Triggers** - Auto, hover, click, scroll into view, or manual
@@ -18,21 +19,21 @@ Beautiful text animations for React with zero dependencies. Make your text come 
 ## 📦 Installation
 
 ```bash
-npm install react-text-animate
+npm install react-text-animator
 ```
 
 ```bash
-yarn add react-text-animate
+yarn add react-text-animator
 ```
 
 ```bash
-pnpm add react-text-animate
+pnpm add react-text-animator
 ```
 
 ## 🚀 Quick Start
 
 ```tsx
-import { TextAnimate } from 'react-text-animate';
+import { TextAnimate } from 'react-text-animator';
 
 function App() {
   return (
@@ -62,7 +63,6 @@ Text explodes into particles and reforms - uses Canvas for smooth animation.
   animation="particle"
   particleCount={100}
   particleSize={16}
-  particleColor="#6366f1"
 >
   Watch me explode!
 </TextAnimate>
@@ -83,6 +83,55 @@ Smooth opacity transition with optional stagger.
 ```tsx
 <TextAnimate animation="fadeIn" duration={1000} stagger={30}>
   Fading in smoothly
+</TextAnimate>
+```
+
+### Text Morph
+Smoothly transitions between different text strings.
+
+```tsx
+<TextAnimate
+  animation="morph"
+  morphTexts={["Hello", "World", "React"]}
+  morphInterval={2000}
+>
+  Morphing
+</TextAnimate>
+```
+
+### Scramble
+Random characters gradually resolve to actual text.
+
+```tsx
+<TextAnimate animation="scramble" duration={1500}>
+  Decode this message
+</TextAnimate>
+```
+
+### Glitch
+Cyberpunk-style glitch reveal with RGB split effect.
+
+```tsx
+<TextAnimate animation="glitch" glitchIntensity={0.7}>
+  Cyber Text
+</TextAnimate>
+```
+
+### Wave
+Characters animate in continuous wave pattern.
+
+```tsx
+<TextAnimate animation="wave" waveAmplitude={20}>
+  Wavy Text
+</TextAnimate>
+```
+
+### Blur
+Text goes from blurry to sharp with smooth transition.
+
+```tsx
+<TextAnimate animation="blur" duration={1200}>
+  Coming into focus
 </TextAnimate>
 ```
 
@@ -111,7 +160,23 @@ Smooth opacity transition with optional stagger.
 |------|------|---------|-------------|
 | `particleCount` | `number` | `100` | Number of particles |
 | `particleSize` | `number` | `16` | Size of each particle |
-| `particleColor` | `string` | `'#000000'` | Color of particles |
+| `particleColor` | `string` | (inherited) | Color of particles (inherits text color if not specified) |
+
+#### Morph Animation
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `morphTexts` | `string[]` | - | Array of texts to morph between |
+| `morphInterval` | `number` | `3000` | Time between morphs in milliseconds |
+
+#### Wave Animation
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `waveAmplitude` | `number` | `20` | Height of the wave motion |
+
+#### Glitch Animation
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `glitchIntensity` | `number` | `0.5` | Intensity of glitch effect (0-1) |
 
 ## 🎯 Trigger Types
 
@@ -162,42 +227,61 @@ Animation triggers when element scrolls into view (uses Intersection Observer).
   <TextAnimate animation="slideUp" delay={2200} stagger={50}>
     Then this slides in
   </TextAnimate>
+  <TextAnimate animation="fadeIn" delay={3000}>
+    And this fades in last
+  </TextAnimate>
 </div>
 ```
 
 ### Custom Styling
 ```tsx
 <TextAnimate
-  animation="fadeIn"
+  animation="glitch"
   className="my-custom-class"
   style={{
     fontSize: '3rem',
     fontWeight: 'bold',
-    color: '#6366f1',
+    color: '#00ffff',
   }}
 >
-  Styled text
+  Styled glitch text
 </TextAnimate>
 ```
 
 ### With Callback
 ```tsx
 <TextAnimate
-  animation="typewriter"
-  onComplete={() => console.log('Animation complete!')}
+  animation="scramble"
+  onComplete={() => console.log('Decoded!')}
 >
-  I'll log when done
+  Secret message
 </TextAnimate>
 ```
 
 ### Repeating Animation
 ```tsx
+<TextAnimate animation="wave" repeat={true}>
+  Loops forever
+</TextAnimate>
+
 <TextAnimate animation="particle" repeat={3}>
   Animates 3 times
 </TextAnimate>
+```
 
-<TextAnimate animation="fadeIn" repeat={true}>
-  Loops forever
+### Dynamic Text Morphing
+```tsx
+<TextAnimate
+  animation="morph"
+  morphTexts={[
+    "Loading...",
+    "Processing...",
+    "Almost there...",
+    "Done!"
+  ]}
+  morphInterval={1500}
+>
+  Loading
 </TextAnimate>
 ```
 
@@ -227,17 +311,18 @@ For older browsers, the component will gracefully fallback to displaying static 
 
 ## 💡 Performance Tips
 
-1. **Use CSS animations** when possible (fadeIn, slideUp) - they're GPU accelerated
+1. **Use CSS animations** when possible (fadeIn, slideUp, blur) - they're GPU accelerated
 2. **Limit particle count** for better performance on lower-end devices
 3. **Use `trigger="view"`** for animations below the fold to delay rendering
 4. **Avoid too many simultaneous animations** on the same page
+5. **Wave animation runs continuously** - use sparingly for best performance
 
 ## 📝 TypeScript
 
 Full TypeScript support with type definitions included:
 
 ```tsx
-import { TextAnimate, TextAnimateProps, AnimationType } from 'react-text-animate';
+import { TextAnimate, TextAnimateProps, AnimationType } from 'react-text-animator';
 
 const animation: AnimationType = 'typewriter';
 
@@ -250,7 +335,7 @@ const props: TextAnimateProps = {
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request to [https://github.com/hichamcc/react-text-animator](https://github.com/hichamcc/react-text-animator)
 
 ## 📄 License
 
