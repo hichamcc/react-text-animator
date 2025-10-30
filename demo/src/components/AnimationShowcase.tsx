@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextAnimate } from 'react-text-animate';
 
 interface Animation {
@@ -84,16 +84,8 @@ const animations: Animation[] = [
 ];
 
 const AnimationShowcase: React.FC = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
-
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
-  };
-
-  const handleCardClick = (index: number) => {
-    setClickedIndex(index);
-    setTimeout(() => setClickedIndex(null), 100);
   };
 
   return (
@@ -107,23 +99,17 @@ const AnimationShowcase: React.FC = () => {
 
         <p style={styles.subheading}>
           <TextAnimate animation="fadeIn" trigger="view" delay={400} stagger={20}>
-            Hover over each card to see the animation in action
+            Hover over each card to see the animation
           </TextAnimate>
         </p>
 
         <div style={styles.grid}>
-          {animations.map((animation, index) => {
-            const isHovered = hoveredIndex === index;
-            const shouldReplay = clickedIndex === index;
-
+          {animations.map((animation) => {
             return (
               <div
                 key={animation.name}
                 className="card"
                 style={styles.card}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => handleCardClick(index)}
               >
                 <h3 style={styles.cardTitle}>{animation.name}</h3>
                 <p style={styles.cardDescription}>{animation.description}</p>
@@ -131,10 +117,9 @@ const AnimationShowcase: React.FC = () => {
                 <div style={styles.demo}>
                   <TextAnimate
                     animation={animation.type}
-                    trigger={animation.type === 'wave' || animation.type === 'morph' ? 'auto' : 'hover'}
+                    trigger="hover"
                     duration={animation.type === 'typewriter' ? 1500 : animation.type === 'particle' ? 2000 : 1000}
                     stagger={animation.type === 'typewriter' ? 80 : 50}
-                    key={`${animation.type}-${isHovered || shouldReplay ? 'active' : 'inactive'}`}
                     {...(animation.specialProps || {})}
                   >
                     {animation.demoText || 'Hover me!'}

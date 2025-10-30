@@ -1,12 +1,14 @@
 import React from 'react';
 import Hero from './components/Hero';
 import AnimationShowcase from './components/AnimationShowcase';
+import Docs from './components/Docs';
 
 const App: React.FC = () => {
   return (
     <div className="app">
       <Hero />
       <AnimationShowcase />
+      <Docs />
 
       <footer style={styles.footer}>
         <div className="container">
@@ -14,11 +16,11 @@ const App: React.FC = () => {
             Built with ❤️ using React Text Animate
           </p>
           <p style={styles.footerLinks}>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
+            <a href="https://github.com/hichamcc/react-text-animator" target="_blank" rel="noopener noreferrer" style={styles.link}>
               GitHub
             </a>
             {' • '}
-            <a href="https://npmjs.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
+            <a href="https://www.npmjs.com/package/react-text-animator" target="_blank" rel="noopener noreferrer" style={styles.link}>
               npm
             </a>
             {' • '}

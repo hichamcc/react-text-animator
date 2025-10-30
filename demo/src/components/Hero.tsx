@@ -2,6 +2,13 @@ import React from 'react';
 import { TextAnimate } from 'react-text-animate';
 
 const Hero: React.FC = () => {
+  const scrollToDocs = () => {
+    const docsSection = document.getElementById('docs');
+    if (docsSection) {
+      docsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="hero" style={styles.hero}>
       <style>{`
@@ -37,14 +44,21 @@ const Hero: React.FC = () => {
           </div>
 
           <div style={styles.buttons}>
+            <button
+              onClick={scrollToDocs}
+              className="btn btn-primary"
+              style={{ textDecoration: 'none', cursor: 'pointer' }}
+            >
+              📖 Documentation
+            </button>
             <a
               href="https://www.npmjs.com/package/react-text-animator"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary"
+              className="btn btn-secondary"
               style={{ textDecoration: 'none' }}
             >
-              📦 npm Docs
+              📦 npm
             </a>
             <a
               href="https://github.com/hichamcc/react-text-animator"
